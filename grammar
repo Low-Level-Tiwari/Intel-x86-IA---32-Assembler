@@ -1,0 +1,33 @@
+
+
+##################################################### GRAMMAR ##########################################################
+
+
+S -> SYM COLON INS | INS | DEFN | DIR | SECT
+
+DEFN -> SYM DEF VALUE | SYM BDEF NUM
+
+VALUE -> NUM | QUOTE  
+
+DIR -> DIRC SYM
+
+SECT -> section SEC
+
+
+
+INS -> OP0 | OP1 | OP2
+
+OP0 -> RET
+
+OP1 -> OP-1 REG | OP-1 MEM | OP-1 IMM 
+
+OP2 -> OP-2 REG REG | OP-2 REG MEM | OP-2 REG IMM | OP-2 MEM IMM | OP-2 MEM REG
+
+
+
+IMM -> NUM | SYM
+
+MEM -> OP SYM CLS | DWD OP SYM CLS
+
+
+########################################################################################################################

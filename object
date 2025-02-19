@@ -1,0 +1,11 @@
+sed 's/[a-z]\+\|S\|\|T//g' $1  | sed 's/^ B.*$//' | sed 's/^ D.*$//' | sed 's/^........//' >  tmp;
+
+./label_remove tmp > final
+
+sed 's/\(..\)/\\x\1/g' final | sed 's/^/printf "/' | sed 's/$/"/' > tmp
+
+chmod +x tmp
+
+./tmp > $1.o
+
+rm tmp final

@@ -1,0 +1,55 @@
+
+
+case $1 in
+
+	"-o")
+		./gen_imd < $2 > $2.sym
+		mv result $2.i
+		./object $2.i
+		rm $2.i
+		rm $2.sym
+		echo -e "\nObject Code Generated $2.i.o \n"
+	;;
+
+	"-i")
+		./gen_imd < $2 > $2.sym
+		mv result $2.i
+		./object $2.i
+		rm $2.sym
+		echo -e "\nIntermediate Code Generated $2.i \n"
+		echo -e "Object Code Generated $2.i.o \n"
+	;;
+	
+	"-s")
+		./gen_imd < $2 > $2.sym
+		mv result $2.i
+		./object $2.i
+		rm $2.i
+		echo -e "\nSymbol Table Generated $2.sym \n"
+		echo -e "Object Code Generated $2.i.o \n"
+	;;
+	
+	"-a")
+		./gen_imd < $2 > $2.sym
+		mv result $2.i
+		./object $2.i
+		echo -e "\nIntermediate Code Generated $2.i \n"
+		echo -e "Symbol Table Generated $2.sym \n"
+		echo -e "Object Code Generated $2.i.o \n"
+	;;
+
+	
+	"-h")
+		echo -e "\nUsage: \n"
+		echo -e "  -i      -- Generate Intermediate Code \n"
+		echo -e "  -s      -- Generate Symbol Table\n"
+		echo -e "  -o      -- Generate Object Code \n"
+		echo -e "  -a      -- Save all Temp Files \n"
+		echo -e "  -h      -- Help \n"
+	;;
+
+	*)
+		echo -e "\nInvalid flag to Assembler\n"
+	;;
+esac
+
